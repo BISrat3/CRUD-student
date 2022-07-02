@@ -6,9 +6,9 @@ import Container from "react-bootstrap/Container"
 const Nav = () => {
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="success" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/">Student App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
