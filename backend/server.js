@@ -42,6 +42,13 @@ app.get('/student', async (req,res)=>{
     }
 })
 
+app.post("/student", async (req,res) =>{
+    try {
+        res,json(await Student.create(req.body));
+    } catch (error){
+        res.status(400).json(error);
+    }
+})
 
 app.listen(process.env.PORT, ()=>
     console.log(`Listening on port:${process.env.PORT}`))
