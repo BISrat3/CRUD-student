@@ -3,7 +3,7 @@ const mongoose = require ('mongoose')
 
 const app = express()
 
-require('dotenv').config()
+require('./config/db.connection')
 
 
 app.listen(process.env.PORT, ()=>
