@@ -9,17 +9,6 @@ require('./config/db.connection')
 
 const db = require('./models')
 
-// // Models
-
-// const StudentSchema = new mongoose.Schema({
-//     fname:String,
-//     lname:String,
-//     phonenumber:String,
-//     stateCode:Number,
-//     stateName:String,
-// })
-
-
 // const Student = mongoose.model ("Student", StudentSchema);
 
 // Middleware
