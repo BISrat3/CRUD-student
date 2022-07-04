@@ -3,13 +3,6 @@ import {Link} from 'react-router-dom'
 
 
 function StudentRecord(props){
-    // // userParams to grab the idx used for this particular show page
-    // let {idx} = useParams()
-    // // If line 5 used to idx = instead of destructring,
-    // // just add the dot method for line 9 to target the value of the idx then
-    // console.log(idx)
-
-    // let student= props.students[idx]
     // state to hold form data
     const [ newStudent, setNewStudent] = useState({
         name :'',
