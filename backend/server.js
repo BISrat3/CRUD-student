@@ -9,8 +9,6 @@ require('./config/db.connection')
 
 const db = require('./models')
 
-// const Student = mongoose.model ("Student", StudentSchema);
-
 // Middleware
 
 app.use(cors());
