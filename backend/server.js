@@ -2,22 +2,25 @@ const express = require('express')
 const mongoose = require ('mongoose') 
 const cors = require('cors');
 const morgan = require('morgan');
+const models = require('./models')
 const app = express()
 
 require('./config/db.connection')
 
-// Models
+const db = require('./models')
 
-const StudentSchema = new mongoose.Schema({
-    fname:String,
-    lname:String,
-    phonenumber:String,
-    stateCode:Number,
-    stateName:String,
-})
+// // Models
+
+// const StudentSchema = new mongoose.Schema({
+//     fname:String,
+//     lname:String,
+//     phonenumber:String,
+//     stateCode:Number,
+//     stateName:String,
+// })
 
 
-const Student = mongoose.model ("Student", StudentSchema);
+// const Student = mongoose.model ("Student", StudentSchema);
 
 // Middleware
 
@@ -34,7 +37,7 @@ app.get("/", (req,res)=>{
 // Index Route
 app.get('/student', async (req,res)=>{
     try{
-        res.json(await Student.find({}));
+        res.json(await db.find({}));
 
     }
     catch (error){
@@ -44,7 +47,7 @@ app.get('/student', async (req,res)=>{
 
 app.post("/student", async (req,res) =>{
     try {
-        res,json(await Student.create(req.body));
+        res,json(await db.create(req.body));
     } catch (error){
         res.status(400).json(error);
     }
