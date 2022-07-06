@@ -21,7 +21,7 @@ app.use('/', controllers)
 // Routes 
 
 app.get("/", (req,res)=>{
-    res.send("hello world")
+    res.send("Student Record")
 })
 
 // // Index Route
