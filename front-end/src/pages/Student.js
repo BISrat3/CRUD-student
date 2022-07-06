@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
 
-function StudentRecord(props){
+function Student(props){
     // state to hold form data
     const [ newStudent, setNewStudent] = useState({
-        name :'',
+        firstname:'',
+        lastname:'',
         phonenumber:'',
-        state:''
+        stateCode:'',
+        stateName:''
         })
 
     // handle change function for form
@@ -20,18 +22,20 @@ function StudentRecord(props){
         e.preventDefault();
         props.createStudent(newStudent);
         setNewStudent({
-            name:'',
+            firstname:'',
+            lastname:'',
             phonenumber:'',
-            state:''
+            stateCode:'',
+            stateName:''
         })
     }
     const laoded=() =>{
         return props.people.map((student)=>(
             <div key={student._id} className='student'>
                 <Link to={`/${student._id}`}>
-                    <h2>{student.name}</h2>
+                    <h2>{student.firstname}</h2>
                     <h2>{student.phonenumber}</h2>
-                    <h2>{student.state}</h2>
+                    <h2>{student.stateCode}</h2>
                 </Link>
             </div>
         )
@@ -44,14 +48,21 @@ function StudentRecord(props){
         <section>
             <form onSubmit={handleSubmit} className='registration-form'>
                 <input type='text' value={newStudent.name} name='name'
-                placeholder='name' onChange={handleChange
+                placeholder='Fname' onChange={handleChange
+                } />
+                <input type='text' value={newStudent.name} name='name'
+                placeholder='Lname' onChange={handleChange
                 } />
                 <input type='number' value={newStudent.phonenumber} name='number'
                 placeholder='phonenumber' onChange={handleChange
                 } />
+                 <input type='number' value={newStudent.stateCode} name='number'
+                placeholder='State Code' onChange={handleChange
+                } />
                  <input type='text' value={newStudent.state} name='name'
                 placeholder='state' onChange={handleChange
-                } />       
+                } />      
+                <br /> 
                 <input type='submit' value='Create Student!'/>
             </form>
             {props.people ? laoded() : loading()}
@@ -59,4 +70,4 @@ function StudentRecord(props){
     )
 }
 
-export default StudentRecord
+export default Student

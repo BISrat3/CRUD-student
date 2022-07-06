@@ -9,7 +9,7 @@ function StudentList(props) {
         {props.students ? props.students.map((student, idx)=>(
             <div key={idx}>
             <Link to ={`/idx`}>
-            <h3>{student.name}</h3>
+            <h3>{student.firstname}</h3>
             <h3>{student.phoneNumber}</h3>
             </Link>
             <h2>{student.state}</h2>

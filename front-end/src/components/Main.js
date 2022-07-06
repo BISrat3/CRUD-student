@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
-import StudentRecord from '../pages/StudentPage'
+import Student from '../pages/Student'
 import StudentList from '../pages/StudentList'
 
 function Main(props){
     const [student, setStudent] = useState(null)
 
-    const URL ="https://mens-styles-store.herokuapp.com/"
+    const URL =""
 
     const getStudent =() =>{
         fetch(URL)
@@ -29,7 +29,7 @@ function Main(props){
         <>
             <Routes>
                 <Route exact path='/:idx' element={<StudentList student={student}/>}/>
-                <Route path='/' element={<StudentRecord createStudent={createStudent}/>}/>
+                <Route path='/student' element={<Student createStudent={createStudent}/>}/>
             </Routes>
         </>
     )
