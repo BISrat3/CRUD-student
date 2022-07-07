@@ -6,7 +6,7 @@ import StudentList from '../pages/StudentList'
 function Main(props){
     const [student, setStudent] = useState(null)
 
-    const URL =""
+    const URL ="https://backend-strecord.herokuapp.com/student/"
 
     const getStudent =() =>{
         fetch(URL)
@@ -14,9 +14,12 @@ function Main(props){
         .then(result => setStudent(result))
     }
 
+    useEffect(()=> getStudent(), [])
+
+    
     const createStudent = async (student)=>{
         await fetch (URL, {
-            method:"post",
+            method:"POST",
             headers:{
                 "Content-Type": "application/json",
             },
@@ -29,7 +32,7 @@ function Main(props){
         <>
             <Routes>
                 <Route exact path='/:idx' element={<StudentList student={student}/>}/>
-                <Route path='/student' element={<Student createStudent={createStudent}/>}/>
+                <Route path='/student' element={<Student createStudent={createStudent} student={student}/>}/>
             </Routes>
         </>
     )

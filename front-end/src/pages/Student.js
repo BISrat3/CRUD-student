@@ -12,14 +12,15 @@ function Student(props){
         })
 
     // handle change function for form
-    const handleChange =(e)=>{
-        console.log(e.target.value)
-        setNewStudent({...newStudent,[e.target.name]:e.target.value})
+    const handleChange =(event)=>{
+        console.log(event.target.value)
+        setNewStudent({...newStudent,[event.target.name]:event.target.value})
     }
 
     // submit function
-    const handleSubmit =(e) =>{
-        e.preventDefault();
+    const handleSubmit =(event) =>{
+        event.preventDefault();
+        console.log(event)
         props.createStudent(newStudent);
         setNewStudent({
             firstname:'',
@@ -29,7 +30,7 @@ function Student(props){
             stateName:''
         })
     }
-    const laoded=() =>{
+    const loaded=() =>{
         return props.people.map((student)=>(
             <div key={student._id} className='student'>
                 <Link to={`/${student._id}`}>
@@ -47,25 +48,25 @@ function Student(props){
     return(
         <section>
             <form onSubmit={handleSubmit} className='registration-form'>
-                <input type='text' value={newStudent.name} name='name'
+                <input type='text' value={newStudent.name} name='firstname'
                 placeholder='Fname' onChange={handleChange
                 } />
-                <input type='text' value={newStudent.name} name='name'
+                <input type='text' value={newStudent.name} name='lastname'
                 placeholder='Lname' onChange={handleChange
                 } />
-                <input type='number' value={newStudent.phonenumber} name='number'
+                <input type='number' value={newStudent.phonenumber} name='phonenumber'
                 placeholder='phonenumber' onChange={handleChange
                 } />
-                 <input type='number' value={newStudent.stateCode} name='number'
+                 <input type='number' value={newStudent.stateCode} name='stateCode'
                 placeholder='State Code' onChange={handleChange
                 } />
-                 <input type='text' value={newStudent.state} name='name'
-                placeholder='state' onChange={handleChange
+                 <input type='text' value={newStudent.state} name='statename'
+                placeholder='state name' onChange={handleChange
                 } />      
                 <br /> 
                 <input type='submit' value='Create Student!'/>
             </form>
-            {props.people ? laoded() : loading()}
+            {props.people ? loaded() : loading()}
         </section>
     )
 }
