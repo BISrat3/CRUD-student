@@ -8,13 +8,13 @@ function StudentList(props) {
     const record = student.find(record=> record._id === id)
   return (
     <>
+            <h3>{record.firstname}</h3>
+            <h3>{record.phoneNumber}</h3>
+            <h2>{record.state}</h2>
         {props.students ? props.students.map((student, idx)=>(
             <div key={idx}>
             <Link to ={`/idx`}>
-            <h3>{record.firstname}</h3>
-            <h3>{record.phoneNumber}</h3>
             </Link>
-            <h2>{record.state}</h2>
           </div>
         )): <h3> Loading! Please Wait!</h3>}
         
