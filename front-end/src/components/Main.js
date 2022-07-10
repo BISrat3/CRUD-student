@@ -8,31 +8,32 @@ function Main(props){
 
     const URL ="https://backend-strecord.herokuapp.com/student/"
 
-    const getStudent =() =>{
+    const getStudent = () =>{
         fetch(URL)
         .then(res => res.json())
         .then(result => setStudent(result))
     }
 
-    useEffect(()=> getStudent(), [])
-
     
-    const createStudent = async (student)=>{
+    
+    const createStudent = async (record)=>{
         await fetch (URL, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
             },
-            body:JSON.stringify(student),
+            body:JSON.stringify(record),
         });
         getStudent();
     }
-
+    
+    useEffect(()=> getStudent(), [])
+    console.log(`Student are ${student}`)
     return(
         <>
             <Routes>
-                <Route exact path='/:idx' element={<StudentList student={student}/>}/>
-                <Route path='/student' element={<Student createStudent={createStudent} student={student}/>}/>
+                <Route path='/' element={<Student createStudent={createStudent} student={student}/>}/>
+                <Route exact path='/:id' element={<StudentList student={student}/>}/>
             </Routes>
         </>
     )

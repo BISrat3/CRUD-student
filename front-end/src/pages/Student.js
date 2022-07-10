@@ -31,12 +31,12 @@ function Student(props){
         })
     }
     const loaded=() =>{
-        return props.people.map((student)=>(
-            <div key={student._id} className='student'>
-                <Link to={`/${student._id}`}>
-                    <h2>{student.firstname}</h2>
-                    <h2>{student.phonenumber}</h2>
-                    <h2>{student.stateCode}</h2>
+        return props.student.map((record)=>(
+            <div key={record._id} className='record'>
+                <Link to={`/${record._id}`}>
+                    <h2>{record.firstname}</h2>
+                    <h2>{record.phonenumber}</h2>
+                    <h2>{record.stateCode}</h2>
                 </Link>
             </div>
         )
@@ -66,7 +66,7 @@ function Student(props){
                 <br /> 
                 <input type='submit' value='Create Student!'/>
             </form>
-            {props.people ? loaded() : loading()}
+            {props.student ? loaded() : loading()}
         </section>
     )
 }
